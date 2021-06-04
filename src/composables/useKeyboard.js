@@ -53,7 +53,7 @@ export default function useKeyboard (props, context, dep)
     }
 
     else if (e.keyCode === 186 && addTagOn.value.indexOf('semi-colon') !== -1 && createTag.value) {
-      search.value = search.value.trim(';')
+      search.value = search.value.replace(';', '')
 
       nextTick(() => {
         selectPointer()
@@ -61,7 +61,7 @@ export default function useKeyboard (props, context, dep)
     }
 
     else if (e.keyCode === 188 && addTagOn.value.indexOf('comma') !== -1 && createTag.value) {
-      search.value = search.value.trim(',')
+      search.value = search.value.replace(',', '')
 
       nextTick(() => {
         selectPointer()

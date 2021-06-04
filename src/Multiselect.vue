@@ -49,7 +49,7 @@
             :modelValue="search"
             :value="search"
             @focus.stop="openDropdown"
-            @blur.stop="closeDropdown"
+            @blur.stop="closeDropdown; blurSearch"
             @keyup.stop.esc="handleEsc"
             @keyup.stop.enter="selectPointer"
             @keydown.delete="handleSearchBackspace"
