@@ -35,6 +35,9 @@ export default function useDropdown (props, context, dep)
 
   const closeDropdown = () => {
     isOpen.value = false
+    if (searchable && searchable.value) {
+      blurSearch()
+    }
     context.emit('close')
   }
 

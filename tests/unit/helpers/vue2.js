@@ -39,7 +39,7 @@ export const createSelect = (props = {}, options = {}) => {
 
 export const destroy = (wrapper) => {
   wrapper.destroy()
-} 
+}
 
 const keyEvent = (event, wrapper, key) => {
   switch (key) {
@@ -60,6 +60,12 @@ const keyEvent = (event, wrapper, key) => {
       break
     case 'space':
       wrapper.trigger(event, { keyCode: 32 })
+      break
+    case ',':
+      wrapper.trigger(event, { keyCode: 188 })
+      break
+    case ';':
+      wrapper.trigger(event, { keyCode: 186 })
       break
   }
 }

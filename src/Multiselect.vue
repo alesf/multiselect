@@ -41,11 +41,11 @@
           </div>
         </slot>
       </template>
-    
+
       <!-- Search -->
       <template v-if="mode !== 'tags' && searchable && !disabled">
         <div class="multiselect-search">
-          <input    
+          <input
             :modelValue="search"
             :value="search"
             @focus.stop="openDropdown"
@@ -77,13 +77,13 @@
               </div>
             </slot>
           </span>
-      
+
           <div
             v-if="searchable && !disabled"
             class="multiselect-search"
             :style="{ width: tagsSearchWidth }"
           >
-            <input    
+            <input
               :modelValue="search"
               :value="search"
               @focus.stop="openDropdown"
@@ -91,6 +91,8 @@
               @keyup.stop.esc="handleEsc"
               @keyup.stop.enter="handleAddTag"
               @keyup.stop.space="handleAddTag"
+              @keyup.stop.,="handleAddTag"
+              @keyup.stop.;="handleAddTag"
               @keydown.delete="handleSearchBackspace"
               @keydown.stop.up="openDirection === 'top' ? forwardPointer() : backwardPointer()"
               @keydown.stop.down="openDirection === 'top' ? backwardPointer() : forwardPointer()"
@@ -174,7 +176,7 @@
 
     <!-- Hacky input element to show HTML5 required warning -->
     <input v-if="required" class="multiselect-fake-input" tabindex="-1" :value="textValue" required/>
-    
+
     <template v-if="nativeSupport">
       <input v-if="mode == 'single'" type="hidden" :name="name" :value="plainValue !== undefined ? plainValue : ''" />
       <template v-else>
@@ -193,12 +195,12 @@
   import usePointerAction from './composables/usePointerAction'
   import useDropdown from './composables/useDropdown'
   import useMultiselect from './composables/useMultiselect'
-  import useKeyboard from './composables/useKeyboard' 
+  import useKeyboard from './composables/useKeyboard'
 
   export default {
     name: 'Multiselect',
     emits: [
-      'open', 'close', 'select', 'deselect', 
+      'open', 'close', 'select', 'deselect',
       'input', 'search-change', 'tag', 'update:modelValue',
       'change', 'clear'
     ],
@@ -380,7 +382,7 @@
       },
     },
     setup(props, context)
-    { 
+    {
       const value = useValue(props, context)
       const multiselect = useMultiselect(props, context)
       const pointer = usePointer(props, context)
