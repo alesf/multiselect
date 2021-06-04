@@ -49,7 +49,7 @@
             :modelValue="search"
             :value="search"
             @focus.stop="openDropdown"
-            @blur.stop="closeDropdown; blurSearch"
+            @blur.stop="closeDropdown"
             @keyup.stop.esc="handleEsc"
             @keyup.stop.enter="selectPointer"
             @keydown.delete="handleSearchBackspace"
@@ -394,14 +394,6 @@
         iv: value.iv,
       })
 
-      const dropdown = useDropdown(props, context, {
-        multiselect: multiselect.multiselect,
-        blurInput: multiselect.blurInput,
-        blurSearch: search.blurSearch,
-        focusInput: multiselect.focusInput,
-        focusSearch: search.focusSearch,
-      })
-
       const options = useOptions(props, context, {
         ev: value.ev,
         iv: value.iv,
@@ -418,6 +410,15 @@
         handleOptionClick: options.handleOptionClick,
         search: search.search,
         pointer: pointer.pointer,
+      })
+
+      const dropdown = useDropdown(props, context, {
+        multiselect: multiselect.multiselect,
+        blurInput: multiselect.blurInput,
+        blurSearch: search.blurSearch,
+        focusInput: multiselect.focusInput,
+        focusSearch: search.focusSearch,
+        selectPointer: pointerAction.selectPointer,
       })
 
       const keyboard = useKeyboard(props, context, {

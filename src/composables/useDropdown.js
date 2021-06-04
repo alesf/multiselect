@@ -11,6 +11,7 @@ export default function useDropdown (props, context, dep)
   const blurSearch = dep.blurSearch
   const focusInput = dep.focusInput
   const focusSearch = dep.focusSearch
+  const selectPointer = dep.selectPointer
 
   // ================ DATA ================
 
@@ -35,6 +36,8 @@ export default function useDropdown (props, context, dep)
 
   const closeDropdown = () => {
     isOpen.value = false
+
+    selectPointer()
     context.emit('close')
   }
 
