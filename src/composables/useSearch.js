@@ -7,6 +7,7 @@ export default function useSearch (props, context, dep)
   // ============ DEPENDENCIES ============
 
   const iv = dep.iv
+  const selectPointer = dep.selectPointer
 
   // ================ DATA ================
 
@@ -44,6 +45,7 @@ export default function useSearch (props, context, dep)
       return
     }
 
+    selectPointer()
     input.value.blur()
   }
 

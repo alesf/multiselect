@@ -51,6 +51,22 @@ export default function useKeyboard (props, context, dep)
         selectPointer()
       })
     }
+
+    else if (e.keyCode === 186 && addTagOn.value.indexOf(';') !== -1 && createTag.value) {
+      search.value = search.value.trim(';')
+
+      nextTick(() => {
+        selectPointer()
+      })
+    }
+
+    else if (e.keyCode === 188 && addTagOn.value.indexOf(',') !== -1 && createTag.value) {
+      search.value = search.value.trim(',')
+
+      nextTick(() => {
+        selectPointer()
+      })
+    }
   }
 
   return {
