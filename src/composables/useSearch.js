@@ -2,7 +2,7 @@ import { ref, toRefs, computed, watch } from 'composition-api'
 
 export default function useSearch (props, context, dep)
 {
-  const { searchable, mode } = toRefs(props)
+  const { searchable, mode, createTag } = toRefs(props)
 
   // ============ DEPENDENCIES ============
 
@@ -45,7 +45,10 @@ export default function useSearch (props, context, dep)
       return
     }
 
-    selectPointer()
+    if (createTag.value) {
+      selectPointer()
+    }
+
     input.value.blur()
   }
 
