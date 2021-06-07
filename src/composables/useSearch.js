@@ -2,12 +2,11 @@ import { ref, toRefs, computed, watch } from 'composition-api'
 
 export default function useSearch (props, context, dep)
 {
-  const { searchable, mode, createTag } = toRefs(props)
+  const { searchable, mode } = toRefs(props)
 
   // ============ DEPENDENCIES ============
 
   const iv = dep.iv
-  const selectPointer = dep.selectPointer
 
   // ================ DATA ================
 
@@ -43,10 +42,6 @@ export default function useSearch (props, context, dep)
   const blurSearch = () => {
     if (!searchable.value) {
       return
-    }
-
-    if (createTag.value) {
-      selectPointer()
     }
 
     input.value.blur()

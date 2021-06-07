@@ -2,7 +2,7 @@ import { ref, toRefs, computed } from 'composition-api'
 
 export default function useDropdown (props, context, dep)
 {
-  const { maxHeight, disabled, searchable } = toRefs(props)
+  const { maxHeight, disabled, searchable, createTag } = toRefs(props)
 
   // ============ DEPENDENCIES ============
 
@@ -37,7 +37,10 @@ export default function useDropdown (props, context, dep)
   const closeDropdown = () => {
     isOpen.value = false
 
-    selectPointer()
+    if (createTag.value) {
+      selectPointer()
+    }
+
     context.emit('close')
   }
 
